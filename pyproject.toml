@@ -1,0 +1,19 @@
+[project]
+name = "Repfunc"
+description = "Basic reporting functions"
+version = "0.1.2"
+authors = [
+    { name = "Kevin Sullivan", email = "sullylifts@gmail.com" }
+]
+dependencies = [
+    "teradata==15.10.0.21",
+    "pandas==1.5.0",
+    "numpy==1.23.4"
+]
+
+[project.optional-dependencies]
+dev = []
+
+[build-system]
+requires = ["setuptools>=40.8.0", "wheel"]
+build-backend = "setuptools.build_meta:__legacy__"
