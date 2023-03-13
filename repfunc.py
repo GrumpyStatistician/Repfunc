@@ -107,7 +107,7 @@ def create_tab(df,writer,workbook,tab_name='sheet1',col=15,row=15,ind= False):
     return worksheet
 # Create table formatting from df
 
-def create_table(df, table_name,primary_index=None, infer_dtype=None):
+def create_table(df, table_name,primary_index=None, infer_dtype=False):
 
     # use numpy to vectorize
     
@@ -125,7 +125,7 @@ def create_table(df, table_name,primary_index=None, infer_dtype=None):
     
     # get table info
     
-    if infer_dtype == 'Y':
+    if infer_dtype == True:
         dtype_list = []
         for i in df:
                 dtype= df[f'{i}'].infer_objects().dtypes
