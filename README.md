@@ -35,11 +35,11 @@ create_tab(df,writer,workbook,'summary tab')
 ```
 <b>create_table(df, table_name, infer_dtype=None) - </b>Generates sql create table based on pandas dataframe column names, character lenth with optional data type inference (defaults to varchar). Added optional manual primary key setting, recommend using this on any table that you're planning on keeping on the server.
 ``` python
-create_table(df,CA_HET.Table_Test,primary_index='some_key')
+create_table(df,'db.Table_Test',primary_index='some_key')
 ```
 <b>insert_df(df, table_name) - </b>Generates sql insert based on pandas dataframe column names
 ``` python
-insert_df(df,CA_HET.Table_Test)
+insert_df(df,'db.Table_Test')
 ```
 <b>df_load(insert,df,session,chunk=False) - </b>Loads data into Teradata database using insert sql, pandas dataframe, and session object. Change chunk to True when working with 10k rows or greater.
 ``` python
