@@ -205,18 +205,7 @@ def df_load(insert,df,session,chunk=False):
             print('Please set chunk option to True or False')
     except Exception as e:
         print(e)
-
-def params(var_names):
-    params={}
-    for i in var_names:
-        params[i] = globals()[i]
-    params_df = pd.DataFrame(params,index=['Parameter'])
-    params_df= params_df.T
-    params_str= params_df.to_string()
-    note = open(f"Parameters-{add_date}.txt","w")
-    note.write(params_str)
-    note.close()
-    
+ 
 def emailer_head(subject,to,cc='',disp='N'):
     outlook = client.Dispatch("Outlook.Application")
     message = outlook.CreateItem(0)
@@ -260,3 +249,9 @@ def protect_wb(input_wb,output_wb,passw,date_include='y'):
     wb.Close()
     win.Quit()
     return file
+
+def create_folder(folder_name):
+    cwd = os.getcwd()
+    folder_path = os.path.join(cwd, folder_name) 
+    os.makedirs(folder_path, exist_ok=True)
+
