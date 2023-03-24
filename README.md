@@ -45,11 +45,6 @@ insert_df(df,'db.Table_Test')
 ``` python
 df_load(insert,df,session,chunk=True)
 ```
-<b>params(var_names) - </b>Creates txt file containining variable names and values
-``` python
-# start_dt and end_dt must be variables assigned prior
-params(['start_dt','end_dt'])
-```
 <b>emailer_head(subject,to,cc='',disp='N') - </b>Creates message object that contains email subject and sendee args with optional CC. Disp arg enables email popup when set to 'Y'.
 ``` python
 emailer_head('Here You go','Sendee@gmail.com')
