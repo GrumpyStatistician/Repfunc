@@ -18,7 +18,7 @@ inputter('Please select from the following options:','file')
 <b>input_pass(txt='Enter Your Password: ') - </b>
 Input_pass function uses getpass module to mask your password in most applications (warning will appear if not applicable). Text defaults to 'Enter Your Password: ', just enter in your text if you want something else.
 ``` python
-input_pass('Whatever you want your prompt to be here')
+input_pass()
 ```
 
 <b>connector(user,passw,auth,sys,drive, ver='2.0',log=False,meth="odbc") - </b>Connection function utilized connect to Teradata. Requires entry of username, password, and auth type (LDAP,TD2). Other arg are defaulted to most commonly used Teradata server.</br>
