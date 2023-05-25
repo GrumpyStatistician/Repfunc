@@ -52,16 +52,19 @@ emailer_head('Here You go','Sendee@gmail.com')
 <b>emailer_body(body,message,attach=None,disp='N') - </b>For adding email body and attachments to message object. Set attach arg to filename to attach to email.
 ``` python
 emailer_body('''
-Good Afternoon Dr.Seldon,
+<p>Good Afternoon Dr.Seldon,</p>
 
-Refer to the attached data.
+<p>Refer to the attached data. Password is PASS.</p>
 
-Best,
+<p>Best,</p>
 
-The Dude
-''','data.xlsx',message)
+<p>The Dude</p>
+''',message)
 ```
 <b>protect_wb(input_wb,output_wb,passw,date_include='y') - </b> Adds password protection to Excel workbook with option to add dates to updated file name.
  ``` python
  protect_wb('Stuff.xlsx','Final','PASS')
   ```
+ <b>create_folder(folder_name) - </b>Creates a folder within the current working directory. folder_name (str) arg is name of folder to be created.
+ ``` python
+ create_folder('202203')
