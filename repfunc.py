@@ -95,16 +95,24 @@ def create_wb(filename,add=None,engine='xlsxriter',ind=False):
     return workbook,writer
 # Create tabs for workbooks 
 
-def create_tab(df,writer,workbook,tab_name='sheet1',col=15,row=15,ind= False):
+def create_tab(df,writer,workbook,tab_name='sheet1',auto_width=True,col=15,row=15,ind=False):
     df_len=len(df.columns)
-    max_col = chr(ord('@') + df_len)
-    row_all = workbook.add_format({'align': 'center'})
-    column_all = workbook.add_format({'align': 'left'})
     df.to_excel(writer, sheet_name=tab_name, index=ind)
     worksheet = writer.sheets[tab_name]
-    worksheet.set_row(0, row, row_all)
-    worksheet.set_column(f'A:{max_col}', col, column_all) 
-    return worksheet
+    if auto_width == True:
+        for col in range(df_len):
+            column = chr(ord('@') + col + 1)
+            max_length =  max([len(str(x)) for x in df.iloc[:,col]])
+            max_header_length = len(df.columns[col])
+            adjusted_width = max(max_length, max_header_length) * 1.2
+            worksheet.set_column(f'{column}:{column}',adjusted_width)
+    else:
+        max_col = chr(ord('@') + df_len)
+        row_all = workbook.add_format({'align': 'center'})
+        column_all = workbook.add_format({'align': 'left'})
+        worksheet.set_row(0, row, row_all)
+        worksheet.set_column(f'A:{max_col}', col, column_all) 
+        return worksheet
 # Create table formatting from df
 
 def create_table(df, table_name,primary_index=None, infer_dtype=False):
@@ -205,7 +213,7 @@ def df_load(insert,df,session,chunk=False):
             print('Please set chunk option to True or False')
     except Exception as e:
         print(e)
- 
+
 def emailer_head(subject,to,cc='',disp='N'):
     outlook = client.Dispatch("Outlook.Application")
     message = outlook.CreateItem(0)
@@ -254,4 +262,3 @@ def create_folder(folder_name):
     cwd = os.getcwd()
     folder_path = os.path.join(cwd, folder_name) 
     os.makedirs(folder_path, exist_ok=True)
-
