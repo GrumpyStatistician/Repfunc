@@ -1,5 +1,7 @@
 # Repfunc
-Basic Reporting functions for DA &amp; reporting
+Basic Reporting functions for DA &amp; reporting. 
+
+Note: Current connection string utilizes Teradata. Check MSSQL folder for details on connecting with MSSQL.
 
 ## Available Functions
 <b>inputter(question,dtype,options=None,file_type='.xlsx',file_dtype=str) - </b>
